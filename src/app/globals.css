@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #19aae5;
+    --color-background: #fdfefe;
+    --color-dark: #09090a;
+    --color-muted: #abcdd8;
+    --color-neutral: #616262;
+    --color-alt-background: #f5f9fb;
+    
+    --background: 195 60% 99%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 198 81% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 195 38% 76%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 195 38% 76%;
+    --input: 195 38% 76%;
+    --ring: 198 81% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dark);
+  font-family: var(--font-dm-serif), serif;
+}
+
+p, span, div, a {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.text-muted {
+  color: var(--color-neutral);
+}
