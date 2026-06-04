@@ -1,210 +1,157 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Johnny Ramos",
-    location: "Honduras",
-    profession: "Ingeniero Eléctrico",
     quote:
-      "Gracias a Comunidad del Intercambio entendí cómo hacer una buena carta de motivación y preparar mi aplicación. Al igual que prepararme con anterioridad para realizar la postulación.",
-    beca: "Beca Fundación Carolina",
-    programa: "Máster en Energías Renovables",
-    universidad: "Universidad Politécnica de Cartagena",
-    pais: "Murcia, España",
-    instagram: "https://www.instagram.com/p/DIMUCDMqq0e/",
-    initials: "JR",
+      "Siempre pensé que la OEA era para perfiles más destacados que el mío. Beca Match me mostró que aplicaba y me guió paso a paso. Hoy estoy cursando mi maestría en la USP.",
+    name: "Valentina Ríos",
+    country: "Colombia",
+    scholarship: "Beca OEA",
+    university: "Universidade de São Paulo, Brasil",
+    year: "2024",
+    flag: "co",
+    color: "#19aae5",
   },
   {
-    name: "María Fernanda Febres",
-    location: "Arequipa, Perú",
-    profession: "Contadora Pública",
     quote:
-      "El equipo de Comunidad del Intercambio supo corregirme en ciertas cosas que estaba haciendo mal en la carta de motivación y me entregaron un formato que facilitó todo el proceso. Estoy muy agradecida por cumplir mi sueño.",
-    beca: "Beca GKS",
-    programa: "Máster en Business Administration",
-    universidad: "Universidad en Corea del Sur",
-    pais: "Corea del Sur",
-    instagram: "https://www.instagram.com/p/DH1IxfbvrZ1/",
-    initials: "MF",
+      "No creía que con mi perfil pudiera ganar una beca completa. Beca Match me mostró que sí aplicaba para Chevening. Me preparé, apliqué y la gané.",
+    name: "Diego Paredes",
+    country: "Ecuador",
+    scholarship: "Beca Chevening",
+    university: "University of Edinburgh, Reino Unido",
+    year: "2025",
+    flag: "ec",
+    color: "#b8860b",
   },
   {
-    name: "Susana Hernández",
-    location: "Costa Rica",
-    profession: "Ingeniera Química",
     quote:
-      "Gracias a la mentoría, logré obtener dos becas: una del Gobierno de Irlanda y otra de la Fundación Carolina. Creo que los ensayos son el mayor filtro para cualquier beca, y aquí aprendí exactamente cómo hacerlos.",
-    beca: "Beca Fundación Carolina + Gobierno Irlandés",
-    programa: "Máster en Química Aplicada / Química Sintética",
-    universidad: "España e Irlanda",
-    pais: "España · Irlanda",
-    instagram: "https://www.instagram.com/p/DHjHO21isg9/",
-    initials: "SH",
+      "El sistema filtra exactamente lo que necesitas. Ninguna beca irrelevante, ninguna fecha vencida. Conseguí la DAAD en 5 meses desde que empecé.",
+    name: "Mariana Castillo",
+    country: "México",
+    scholarship: "Beca DAAD",
+    university: "TU Munich, Alemania",
+    year: "2024",
+    flag: "mx",
+    color: "#b8860b",
   },
   {
-    name: "Vanessa Villegas",
-    location: "Medellín, Colombia",
-    profession: "Bióloga Marina",
     quote:
-      "Tomé la decisión muy rápida de inscribirme en la mentoría y esto me dio mucha más seguridad. Me preparé para la entrevista y las respuestas eran casi todas iguales a lo aprendido. Lo que más recomiendo es arriesgarse.",
-    beca: "Beca Fundación Carolina",
-    programa: "Máster en Biología Marina",
-    universidad: "Universidad en Islas Canarias",
-    pais: "Islas Canarias, España",
-    instagram: "https://www.instagram.com/p/DG1rQnhvevf/",
-    initials: "VV",
+      "Tenía 4 años de experiencia pero no sabía por dónde empezar. Beca Match organizó todo. Hoy tengo una Fulbright y empiezo en septiembre.",
+    name: "Andrés Villanueva",
+    country: "Perú",
+    scholarship: "Beca Fulbright",
+    university: "Georgetown University, EE.UU.",
+    year: "2025",
+    flag: "pe",
+    color: "#19aae5",
   },
 ];
 
-export default function TestimonialsSection() {
-  const [active, setActive] = useState(0);
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.13, duration: 0.55, ease: "easeOut" },
+  }),
+};
 
+export default function TestimonialsSection() {
   return (
-    <section
-      id="testimonios"
-      className="bg-[#09090a] py-24 px-4"
-      aria-label="Testimonios"
-    >
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-24 bg-[#f5fafd] overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#19aae5]/6 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.55 }}
+          className="text-center mb-14"
         >
-          <span className="text-xs font-semibold tracking-widest uppercase text-[#19aae5] mb-3 block">
+          <span className="inline-block text-xs font-semibold tracking-widest text-[#19aae5] uppercase mb-3">
             Historias reales
           </span>
-          <h2 className="text-4xl md:text-5xl text-white font-serif mb-4">
-            Ellos ya ganaron su beca
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#09090a] leading-tight">
+            Ellos ya ganaron su beca.{" "}
+            <span className="text-[#19aae5] italic">Tú puedes ser el siguiente.</span>
           </h2>
-          <p className="text-[#616262] text-lg max-w-xl mx-auto">
-            Profesionales de toda Latinoamérica que transformaron su carrera con
-            una beca internacional.
-          </p>
         </motion.div>
 
-        {/* Tarjeta activa */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35 }}
-            className="bg-[#111213] border border-[#1e2021] rounded-2xl p-8 md:p-12 max-w-3xl mx-auto mb-10"
-          >
-            {/* Estrellas */}
-            <div className="flex gap-1 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-[#19aae5] text-lg">
-                  ★
-                </span>
-              ))}
-            </div>
+        {/* 2×2 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={t.name}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+              className="group relative bg-white rounded-2xl p-5 sm:p-7 shadow-[0_4px_32px_-4px_rgba(25,170,229,0.10)] border border-[#e6f4fb] hover:shadow-[0_8px_48px_-4px_rgba(25,170,229,0.18)] hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Accent top bar */}
+              <div
+                className="absolute top-0 left-6 right-6 h-[3px] rounded-b-full opacity-80"
+                style={{ background: `linear-gradient(90deg, ${t.color}, transparent)` }}
+              />
 
-            {/* Quote */}
-            <blockquote className="text-white text-lg md:text-xl leading-relaxed mb-8 font-light">
-              &ldquo;{testimonials[active].quote}&rdquo;
-            </blockquote>
-
-            {/* Persona */}
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#19aae5] flex items-center justify-center text-white font-semibold text-sm">
-                  {testimonials[active].initials}
-                </div>
-                <div>
-                  <p className="text-white font-semibold">
-                    {testimonials[active].name}
-                  </p>
-                  <p className="text-[#616262] text-sm">
-                    {testimonials[active].profession} ·{" "}
-                    {testimonials[active].location}
-                  </p>
-                </div>
+              {/* Stars */}
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <svg key={s} className="w-4 h-4" viewBox="0 0 20 20" fill="#daa520">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
               </div>
 
-              {/* Beca badge */}
-              <div className="text-right">
-                <p className="text-[#19aae5] font-semibold text-sm">
-                  {testimonials[active].beca}
-                </p>
-                <p className="text-[#616262] text-xs">
-                  {testimonials[active].programa}
-                </p>
-                <p className="text-[#616262] text-xs">
-                  {testimonials[active].pais}
-                </p>
-              </div>
-            </div>
-
-            {/* Ver en Instagram */}
-            <div className="mt-8 pt-6 border-t border-[#1e2021]">
-              <a
-                href={testimonials[active].instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-[#616262] hover:text-[#19aae5] transition-colors duration-200"
+              {/* Quote icon */}
+              <svg
+                className="w-8 h-8 mb-3 opacity-10"
+                style={{ color: t.color }}
+                fill="currentColor"
+                viewBox="0 0 32 32"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-                Ver testimonio completo en Instagram
-              </a>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+                <path d="M10 8C5.6 8 2 11.6 2 16v8h8v-8H6c0-2.2 1.8-4 4-4V8zm14 0c-4.4 0-8 3.6-8 8v8h8v-8h-4c0-2.2 1.8-4 4-4V8z" />
+              </svg>
 
-        {/* Navegación dots */}
-        <div className="flex justify-center items-center gap-3 mb-8">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`transition-all duration-300 rounded-full ${
-                i === active
-                  ? "w-8 h-2 bg-[#19aae5]"
-                  : "w-2 h-2 bg-[#616262] hover:bg-[#abcdd8]"
-              }`}
-              aria-label={`Testimonio ${i + 1}`}
-            />
+              {/* Quote text */}
+              <p className="text-[#2c2c2c] text-base leading-relaxed mb-6 font-light italic">
+                "{t.quote}"
+              </p>
+
+              {/* Divider */}
+              <div className="border-t border-[#e6f4fb] pt-4 sm:pt-5 flex items-start gap-3">
+                {/* Flag */}
+                <img
+                  src={`https://flagcdn.com/w40/${t.flag}.png`}
+                  alt={t.country}
+                  width={28}
+                  height={20}
+                  className="rounded-sm shadow-sm flex-shrink-0 mt-0.5"
+                />
+                <div className="min-w-0">
+                  <p className="font-semibold text-[#09090a] text-sm leading-tight">
+                    {t.name}
+                    <span className="font-normal text-[#616262]"> · {t.country}</span>
+                  </p>
+                  <p className="text-xs text-[#616262] mt-1 leading-snug break-words">
+                    <span
+                      className="font-semibold"
+                      style={{ color: t.color }}
+                    >
+                      {t.scholarship}
+                    </span>{" "}
+                    · {t.university} · {t.year}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Flechas */}
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={() =>
-              setActive((prev) =>
-                prev === 0 ? testimonials.length - 1 : prev - 1
-              )
-            }
-            className="w-10 h-10 rounded-full border border-[#1e2021] text-[#616262] hover:border-[#19aae5] hover:text-[#19aae5] transition-colors duration-200 flex items-center justify-center"
-            aria-label="Anterior"
-          >
-            ←
-          </button>
-          <button
-            onClick={() =>
-              setActive((prev) =>
-                prev === testimonials.length - 1 ? 0 : prev + 1
-              )
-            }
-            className="w-10 h-10 rounded-full border border-[#1e2021] text-[#616262] hover:border-[#19aae5] hover:text-[#19aae5] transition-colors duration-200 flex items-center justify-center"
-            aria-label="Siguiente"
-          >
-            →
-          </button>
         </div>
       </div>
     </section>

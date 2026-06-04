@@ -1,63 +1,92 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BENEFITS } from "@/lib/constants";
-import { 
-  IconUserCheck, 
-  IconFilter, 
-  IconListCheck, 
-  IconBellRinging, 
-  IconBook, 
-  IconUsersGroup 
-} from "@tabler/icons-react";
 import { fadeUpVariant, staggerContainer } from "@/lib/animations";
 
-const ICONS = [
-  <IconUserCheck key="1" className="w-6 h-6 text-primary" stroke={1.5} />,
-  <IconFilter key="2" className="w-6 h-6 text-primary" stroke={1.5} />,
-  <IconListCheck key="3" className="w-6 h-6 text-primary" stroke={1.5} />,
-  <IconBellRinging key="4" className="w-6 h-6 text-primary" stroke={1.5} />,
-  <IconBook key="5" className="w-6 h-6 text-primary" stroke={1.5} />,
-  <IconUsersGroup key="6" className="w-6 h-6 text-primary" stroke={1.5} />
+const BENEFITS = [
+  {
+    icon: "⚡",
+    title: "Ahorro masivo de tiempo",
+    description:
+      "Deja de pasar horas en Google. En minutos conoces qué becas encajan con tu perfil académico y profesional.",
+    highlight: "Hasta 20 hrs/semana ahorradas",
+  },
+  {
+    icon: "🎯",
+    title: "Match inteligente de perfil",
+    description:
+      "Nuestro sistema analiza 40+ factores de tu perfil para mostrarte solo las oportunidades donde realmente tienes ventaja competitiva.",
+    highlight: "Solo becas compatibles contigo",
+  },
+  {
+    icon: "✅",
+    title: "Convocatorias verificadas",
+    description:
+      "Cada oportunidad es revisada constantemente. Olvídate de descubrir que una convocatoria ya cerró después de horas de investigación.",
+    highlight: "Información 100% actualizada",
+  },
+  {
+    icon: "🗺️",
+    title: "Ruta clara paso a paso",
+    description:
+      "Deja de sentirte abrumado. Beca Match organiza el proceso completo para que siempre sepas cuál es tu próximo movimiento.",
+    highlight: "Sin confusión ni bloqueos",
+  },
+  {
+    icon: "🌍",
+    title: "Acceso a 40+ países",
+    description:
+      "Europa, Asia, América del Norte y más. Descubre oportunidades en destinos que ni sabías que existían para tu área de estudio.",
+    highlight: "3,200+ becas indexadas",
+  },
+  {
+    icon: "💡",
+    title: "Más claridad en el proceso",
+    description:
+      "Conocerás exactamente los requisitos, plazos y documentos de cada oportunidad. Decisiones informadas, no adivinanzas.",
+    highlight: "Transparencia total garantizada",
+  },
 ];
 
 export default function BenefitsSection() {
   return (
-    <section className="py-20 md:py-32 bg-[var(--color-alt-background)]">
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
+    <section className="py-20 md:py-32 bg-[#fdfefe]">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
-          className="max-w-5xl mx-auto"
         >
-          <motion.h2 
-            variants={fadeUpVariant}
-            className="text-3xl md:text-4xl lg:text-[40px] font-serif text-dark text-center mb-16"
-          >
-            Todo lo que necesitas para ganar tu beca
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Benefits grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {BENEFITS.map((benefit, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={fadeUpVariant}
-                className="bg-white p-8 rounded-2xl border-[0.5px] border-muted transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 group"
+                className="group bg-white border border-[#abcdd8]/30 rounded-2xl p-7 hover:border-[#19aae5]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
-                  {ICONS[index]}
+                <div className="text-4xl mb-5">{benefit.icon}</div>
+                <div className="inline-block bg-[#19aae5]/8 text-[#19aae5] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                  {benefit.highlight}
                 </div>
-                <h3 className="text-xl font-semibold text-dark mb-3">
+                <h3 className="text-lg font-semibold text-[#09090a] mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-neutral text-base leading-relaxed">
+                <p className="text-sm text-[#616262] leading-relaxed">
                   {benefit.description}
                 </p>
               </motion.div>
             ))}
           </div>
+
+          {/* Micro message */}
+          <motion.p
+            variants={fadeUpVariant}
+            className="text-center text-[#616262] text-base italic"
+          >
+            Todo esto por menos de USD 10 al mes. ¿Sigues dudando? Continúa leyendo. ↓
+          </motion.p>
         </motion.div>
       </div>
     </section>
