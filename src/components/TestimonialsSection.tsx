@@ -121,12 +121,13 @@ export default function TestimonialsSection() {
 
               {/* Quote text */}
               <p className="text-[#2c2c2c] text-base leading-relaxed mb-6 font-light italic">
-                "{t.quote}"
+                &quot;{t.quote}&quot;
               </p>
 
               {/* Divider */}
               <div className="border-t border-[#e6f4fb] pt-4 sm:pt-5 flex items-start gap-3">
                 {/* Flag */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`https://flagcdn.com/w40/${t.flag}.png`}
                   alt={t.country}

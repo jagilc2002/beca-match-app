@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { fadeUpVariant, staggerContainer } from "@/lib/animations";
-import { useModal } from "@/lib/modal-context";
 
 const INCLUDES = [
   {
@@ -44,8 +43,6 @@ const INCLUDES = [
 ];
 
 export default function IncludesSection() {
-  const { openModal } = useModal();
-
   return (
     <section className="py-20 md:py-32 bg-[#fdfefe] relative overflow-hidden">
       {/* Glow */}
