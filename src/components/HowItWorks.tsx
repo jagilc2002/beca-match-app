@@ -44,7 +44,7 @@ export default function HowItWorks() {
           {/* Header */}
           <motion.div variants={fadeUpVariant} className="text-center mb-16">
             <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#19aae5] border border-[#abcdd8] rounded-full px-4 py-1.5 mb-5">
-              Cómo funciona
+              Cómo
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#09090a] mb-4 leading-tight">
               Tu camino hacia una beca internacional en 3 pasos
