@@ -42,7 +42,7 @@ export default function FinalCTA() {
               onClick={openModal}
               className="group relative overflow-hidden w-full sm:w-auto bg-[#22c55e] text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl px-6 sm:px-10 md:px-14 py-5 sm:py-6 md:py-7 rounded-2xl shadow-2xl shadow-[#22c55e]/40 hover:brightness-110 transition-all duration-300"
             >
-              Aprovechar últimos 15 cupos disponibles
+              Aprovechar últimos 15 cupos
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
           </motion.div>
