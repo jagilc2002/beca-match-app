@@ -4,14 +4,7 @@ import { motion } from "framer-motion";
 import { fadeUpVariant, staggerContainer } from "@/lib/animations";
 import { useModal } from "@/lib/modal-context";
 
-const SUMMARY_ITEMS = [
-  "✅ +3,200 becas internacionales indexadas",
-  "✅ Matching personalizado con tu perfil",
-  "✅ Convocatorias verificadas y actualizadas",
-  "✅ Ruta clara paso a paso",
-  "✅ Bono: Guía de Becas Internacionales",
-  "✅ Bono: 5 Plantillas de CV Internacional",
-];
+
 
 export default function FinalCTA() {
   const { openModal } = useModal();
